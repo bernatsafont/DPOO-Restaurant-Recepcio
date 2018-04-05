@@ -1,7 +1,11 @@
 package view;
 
+import controller.ButtonController;
+import controller.KeyController;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.Date;
 
 
 public class MainView extends JFrame{
@@ -14,6 +18,9 @@ public class MainView extends JFrame{
     private SpinnerNumberModel smComensals;
     private SpinnerDateModel sdmDate;
     private JButton jbReservation;
+    private JCheckBox jcbOrder;
+    private JCheckBox jcbAsk;
+    private JSpinner spinnerDate;
 
 
     public MainView(){
@@ -66,7 +73,7 @@ public class MainView extends JFrame{
         jpTotal.add(spinner,c);
 
         // ask or order
-        JCheckBox jcbAsk = new JCheckBox("Demanar");
+        jcbAsk = new JCheckBox("Demanar");
         jcbAsk.setSelected(true);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
@@ -75,7 +82,7 @@ public class MainView extends JFrame{
         c.gridwidth = 1;
         jpTotal.add(jcbAsk, c);
 
-        JCheckBox jcbOrder = new JCheckBox("Reservar");
+        jcbOrder = new JCheckBox("Reservar");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 2;
@@ -96,7 +103,7 @@ public class MainView extends JFrame{
 
         // place the date
         sdmDate = new SpinnerDateModel();
-        JSpinner spinnerDate = new JSpinner(sdmDate);
+        spinnerDate = new JSpinner(sdmDate);
         c.gridx = 1;
         c.weightx = 0.5;
         c.insets = new Insets(10,0,10,20);
@@ -117,7 +124,43 @@ public class MainView extends JFrame{
 
         setSize(400,400);
         setTitle("Recepcio");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
+
+    public void registerControllers(ButtonController b, KeyController k){
+        jbReservation.setActionCommand("Reservation");
+        jbReservation.addActionListener(b);
+
+        jcbAsk.setActionCommand("Ask");
+        jcbAsk.addActionListener(b);
+        jcbOrder.setActionCommand("Order");
+        jcbOrder.addActionListener(b);
+
+
+    }
+    public boolean getStateAsk(){
+        return jcbAsk.isSelected();
+    }
+
+    public boolean getStateOrder(){
+        return jcbOrder.isSelected();
+    }
+
+    public void setSelectedAsk(boolean b){
+        jcbAsk.setSelected(b);
+    }
+
+    public void setSelectedOrder(boolean b){
+        jcbOrder.setSelected(b);
+    }
+
+    public void setEnableDate(boolean b){
+        spinnerDate.setEnabled(b);
+    }
+
+    public String getReservationName(){
+        return jtfUser.getName();
+    }
+
 }
