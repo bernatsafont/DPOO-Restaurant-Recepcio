@@ -1,5 +1,6 @@
 import controller.ButtonController;
 import controller.KeyController;
+import model.ConnectivityData;
 import view.MainView;
 
 public class Main {
@@ -8,11 +9,14 @@ public class Main {
         // crate the view
         MainView mView = new MainView();
 
+        // create the model
+        ConnectivityData mData = new ConnectivityData();
+
         // create the controllers
-        ButtonController bController = new ButtonController() ;
+        ButtonController bController = new ButtonController(mView, mData) ;
         KeyController kController = new KeyController();
 
-        // create the model
+
 
         // make the connections with the view
         mView.registerControllers(bController,kController);
