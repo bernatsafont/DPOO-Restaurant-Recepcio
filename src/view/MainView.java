@@ -119,6 +119,5 @@ public class MainView extends JFrame{
         setTitle("Recepcio");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-
     }
 }
