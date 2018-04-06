@@ -225,6 +225,15 @@ public class MainView extends JFrame{
     }
 
     /***
+     * Getter that returns the actual date
+     * @return Date the actual date
+     */
+    public Date getDate(){
+        return sdmDate.getDate();
+    }
+
+
+    /***
      * Method to generate message dialog
      * @param view the view where show message
      * @param message String with the message

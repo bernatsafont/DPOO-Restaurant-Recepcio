@@ -2,6 +2,8 @@
 package controller;
 
 // import local classes
+import model.ConnectivityData;
+import network.ReceptionNetwork;
 import view.MainView;
 
 // import java classes
@@ -13,15 +15,19 @@ import java.awt.event.ActionListener;
  */
 public class ButtonController implements ActionListener{
 
-    // create a instance of the view
+    // create a instance of the view, model and network
     private MainView mView;
+    private ReceptionNetwork rNetwork;
+    private ConnectivityData cModel;
 
     /***
-     * Createor that sets the view and the network
+     * Createor that sets the view and the model
      * @param mView MainView instance to get the view
+     * @param cModel ConnectivityData instance to get the model
      */
-    public ButtonController(MainView mView) {
+    public ButtonController(MainView mView, ConnectivityData cModel) {
         this.mView = mView;
+        this.cModel = cModel;
     }
 
     /***
@@ -59,8 +65,25 @@ public class ButtonController implements ActionListener{
                 if(!s.equals("OK")){
                     mView.popWindow(mView, s, "Entry Warning", "Warning");
                 }else{
+
+                    // connection with server, send client petition
                     try{
-                        // connection with server, send client petition
+
+                        rNetwork = new ReceptionNetwork(cModel.getIP(), cModel.getPORT());
+                        rNetwork.sendName(mView.getReservationName());
+                        rNetwork.sendComensals(mView.getComensals());
+                        rNetwork.sendDate(mView.getDate());
+                    }catch (Exception e1){
+                        mView.popWindow(mView, e1.getMessage(), "Server Error", "Error");
+                    }
+
+                    // wait server answer
+                    try{
+                        boolean answer = rNetwork.getAnswer();
+                        String code = rNetwork.getCode();
+                        if(answer){
+                            mView.popWindow(mView, "Your table code is: " + code, "Now you have a table", "Info");
+                        }
                     }catch (Exception e1){
                         mView.popWindow(mView, e1.getMessage(), "Server Error", "Error");
                     }

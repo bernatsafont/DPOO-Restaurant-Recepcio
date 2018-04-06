@@ -22,7 +22,7 @@ public class Main {
         ConnectivityData mData = new ConnectivityData();
 
         // create the controllers
-        ButtonController bController = new ButtonController(mView);
+        ButtonController bController = new ButtonController(mView, mData);
         KeyController kController = new KeyController();
 
         // make the connections with the view
