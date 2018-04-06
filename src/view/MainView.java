@@ -1,14 +1,19 @@
+// package where it belongs
 package view;
 
+// create local classes imports
 import controller.ButtonController;
 import controller.KeyController;
 
+// create java core imports
 import javax.swing.*;
 import java.awt.*;
 import java.util.Calendar;
 import java.util.Date;
 
-
+/***
+ * This class generates the main view of Recepcio program
+ */
 public class MainView extends JFrame{
 
     // create constants
@@ -24,10 +29,15 @@ public class MainView extends JFrame{
     private JSpinner spinnerDate;
 
 
+    /***
+     * Constructor of the class that generates the items on the view
+     */
     public MainView(){
 
+        // method to populate the view
         populateView();
 
+        // general settings of the window
         setSize(400,400);
         setTitle("Recepcio");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -36,11 +46,12 @@ public class MainView extends JFrame{
 
     }
 
+    /***
+     * Private method that populates the view
+     */
     private void populateView(){
-        // create the utility panels
+        // create the utility panels and its gridbag layout
         JPanel jpTotal = new JPanel();
-
-
         jpTotal.setLayout(new GridBagLayout());
 
         // set main to everything
@@ -83,8 +94,6 @@ public class MainView extends JFrame{
         c.insets = new Insets(10,0,10,20);
         c.gridwidth = 2;
         jpTotal.add(spinner,c);
-
-
 
         // ask or order
         jcbAsk = new JCheckBox("Demanar");
@@ -137,45 +146,80 @@ public class MainView extends JFrame{
         c.gridwidth = 2;
         jpTotal.add(jbReservation, c);
 
+
+        // add the utility panel to the main window panel
         getContentPane().add(jpTotal);
     }
 
+    /***
+     * Function that makes the connection between the controllers and the view
+     * @param b ButtonController instance parameter
+     * @param k KeyController instance parameter
+     */
     public void registerControllers(ButtonController b, KeyController k){
+        // register the button
         jbReservation.setActionCommand("Reservation");
         jbReservation.addActionListener(b);
 
+        // register the checkbox
         jcbAsk.setActionCommand("Ask");
         jcbAsk.addActionListener(b);
         jcbOrder.setActionCommand("Order");
         jcbOrder.addActionListener(b);
-
-
     }
 
+    /***
+     * Getter of the value of Ask checkbox selection
+     * @return Boolean with the selection value
+     */
     public boolean getStateAsk(){
         return jcbOrder.isSelected();
     }
 
+    /***
+     * Getter of the value of Order checkbox selection
+     * @return Boolean with the selection value
+     */
     public boolean getStateOrder(){
         return jcbOrder.isSelected();
     }
 
+    /***
+     * Method to select or deselect the Ask checkbox
+     * @param b Boolean with the new state
+     */
     public void setSelectedAsk(boolean b){
         jcbAsk.setSelected(b);
     }
 
+    /***
+     * Method to select or deselect the Order checkbox
+     * @param b Boolean with the new state
+     */
     public void setSelectedOrder(boolean b){
         jcbOrder.setSelected(b);
     }
 
+    /***
+     * Method to enable or disable the date field
+     * @param b Boolean with the new state
+     */
     public void setEnableDate(boolean b){
         spinnerDate.setEnabled(b);
     }
 
+    /***
+     * Getter of the reservation name
+     * @return String with the name of the reservation name
+     */
     public String getReservationName(){
         return jtfUser.getText();
     }
 
+    /***
+     * Getter of comensals
+     * @return integer with the number of comensals
+     */
     public int getComensals(){
         return (int) smComensals.getNumber();
     }
@@ -188,23 +232,37 @@ public class MainView extends JFrame{
      * @param type String with the type of error
      */
     public void popWindow(MainView view, String message, String title, String type){
-        if (type.equals("Error")){
-            JOptionPane.showMessageDialog(view, message, title, JOptionPane.ERROR_MESSAGE);
-        }else if(type.equals("Warning")){
-            JOptionPane.showMessageDialog(view, message, title, JOptionPane.WARNING_MESSAGE);
-        }else if(type.equals("Info")){
-            JOptionPane.showMessageDialog(view, message, title, JOptionPane.INFORMATION_MESSAGE);
+        // compare the type of error that has to be launch
+        switch (type) {
+            case "Error":
+                JOptionPane.showMessageDialog(view, message, title, JOptionPane.ERROR_MESSAGE);
+                break;
+            case "Warning":
+                JOptionPane.showMessageDialog(view, message, title, JOptionPane.WARNING_MESSAGE);
+                break;
+            case "Info":
+                JOptionPane.showMessageDialog(view, message, title, JOptionPane.INFORMATION_MESSAGE);
+                break;
         }
 
     }
 
+    /***
+     * Method that resets the time on the date counter
+     */
     public void resetCounter(){
+        // create a instance of calendar
         Calendar calendar = Calendar.getInstance();
+
+        // get actual date
         Date initDate = calendar.getTime();
+
+        // get actual date minus a minute, used to prevent a broke on the spinner
         calendar.add(Calendar.MINUTE, -1);
         Date startDate = calendar.getTime();
+
+        // set values to the spinner
         sdmDate.setStart(startDate);
         sdmDate.setValue(initDate);
-
     }
 }
