@@ -9,6 +9,7 @@ import view.MainView;
 // import java classes
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /***
  * Class to control all the button actions
@@ -75,6 +76,11 @@ public class ButtonController implements ActionListener{
                         rNetwork.sendDate(mView.getDate());
                     }catch (Exception e1){
                         mView.popWindow(mView, e1.getMessage(), "Server Error", "Error");
+                        try {
+                            rNetwork.closeConnetion();
+                        } catch (IOException e2) {
+                            mView.popWindow(mView, e2.getMessage(), "Server Error", "Error");
+                        }
                     }
 
                     // wait server answer
@@ -86,6 +92,12 @@ public class ButtonController implements ActionListener{
                         }
                     }catch (Exception e1){
                         mView.popWindow(mView, e1.getMessage(), "Server Error", "Error");
+                    }finally {
+                        try {
+                            rNetwork.closeConnetion();
+                        } catch (IOException e1) {
+                            mView.popWindow(mView, e1.getMessage(), "Server Error", "Error");
+                        }
                     }
                 }
                 break;
