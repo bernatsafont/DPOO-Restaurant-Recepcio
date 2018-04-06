@@ -13,7 +13,7 @@ public class Main {
         ConnectivityData mData = new ConnectivityData();
 
         // create the controllers
-        ButtonController bController = new ButtonController(mView, mData) ;
+        ButtonController bController = new ButtonController(mView) ;
         KeyController kController = new KeyController();
 
 

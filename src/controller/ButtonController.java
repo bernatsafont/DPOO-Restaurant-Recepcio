@@ -31,6 +31,7 @@ public class ButtonController implements ActionListener{
                 }
                 mView.setSelectedAsk(false);
                 mView.setEnableDate(true);
+                mView.resetCounter();
                 break;
             case "Reservation":
                 String s = checkEntry();

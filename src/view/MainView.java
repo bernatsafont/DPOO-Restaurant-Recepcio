@@ -26,6 +26,17 @@ public class MainView extends JFrame{
 
     public MainView(){
 
+        populateView();
+
+        setSize(400,400);
+        setTitle("Recepcio");
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+
+    }
+
+    private void populateView(){
         // create the utility panels
         JPanel jpTotal = new JPanel();
 
@@ -127,13 +138,6 @@ public class MainView extends JFrame{
         jpTotal.add(jbReservation, c);
 
         getContentPane().add(jpTotal);
-
-        setSize(400,400);
-        setTitle("Recepcio");
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-
-
     }
 
     public void registerControllers(ButtonController b, KeyController k){
