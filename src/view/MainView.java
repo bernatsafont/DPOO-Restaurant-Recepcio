@@ -89,6 +89,9 @@ public class MainView extends JFrame{
         // space for the user to write the name
         smComensals = new SpinnerNumberModel(1,1,MAX_COMENSALS,1);
         JSpinner spinner = new JSpinner(smComensals);
+        JFormattedTextField tf = ((JSpinner.DefaultEditor) spinner.getEditor()).getTextField();
+        tf.setEditable(false);
+        tf.setBackground(Color.WHITE);
         c.gridx = 1;
         c.weightx = 0.5;
         c.insets = new Insets(10,0,10,20);
@@ -135,6 +138,9 @@ public class MainView extends JFrame{
         c.insets = new Insets(10,0,10,20);
         c.gridwidth = 2;
         spinnerDate.setEnabled(false);
+        JFormattedTextField tfDate = ((JSpinner.DefaultEditor) spinnerDate.getEditor()).getTextField();
+        tfDate.setEditable(false);
+        tfDate.setBackground(Color.WHITE);
         jpTotal.add(spinnerDate,c);
 
         // reservation button
