@@ -69,7 +69,6 @@ public class ReceptionNetwork {
     public void sendReservation(String reservationName, int comensals, Date date) throws IOException {
         dos.writeUTF("RESERVATION");
         dos.writeUTF(reservationName);
-        //TODO: COMPROVAR QUE EL NOMBRE DE COMENSALS ES CORRECTE I NO STRINGS
         dos.writeInt(comensals);
         oos.writeObject(date);
     }

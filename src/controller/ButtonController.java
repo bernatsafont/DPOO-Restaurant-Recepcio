@@ -90,7 +90,7 @@ public class ButtonController implements ActionListener{
                         System.out.println(code);
                         if(answer){
                             mView.popWindow(mView, "Your table code is: " + code, "Now you have a table", "Info");
-                            //TODO: BUIDAR ELS CAMPS DE LA VISTA UN COP LA RESERVA ESTA FETA
+                            mView.clearAllFields();
                         }else{
                             mView.popWindow(mView, code, "Unable to reserve a table", "Error");
 

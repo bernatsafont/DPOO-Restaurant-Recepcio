@@ -281,4 +281,13 @@ public class MainView extends JFrame{
         sdmDate.setStart(startDate);
         sdmDate.setValue(initDate);
     }
+
+    /***
+     * Method that clears all the fiels of the view
+     */
+    public void clearAllFields(){
+        jtfUser.setName("");
+        smComensals.setValue(1);
+        resetCounter();
+    }
 }
