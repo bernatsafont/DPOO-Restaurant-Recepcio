@@ -3,11 +3,13 @@ package view;
 
 // create local classes imports
 import controller.ButtonController;
-import controller.KeyController;
+import controller.MouseComensalsController;
+import controller.MouseDateController;
 
 // create java core imports
 import javax.swing.*;
 import java.awt.*;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -27,6 +29,7 @@ public class MainView extends JFrame{
     private JCheckBox jcbOrder;
     private JCheckBox jcbAsk;
     private JSpinner spinnerDate;
+    private JSpinner spinner;
 
 
     /***
@@ -55,7 +58,7 @@ public class MainView extends JFrame{
         jpTotal.setLayout(new GridBagLayout());
 
         // set main to everything
-        jpTotal.setBorder(BorderFactory.createTitledBorder("Agafar taula"));
+        jpTotal.setBorder(BorderFactory.createTitledBorder("Add table"));
 
         // set components to the bag
         GridBagConstraints c = new GridBagConstraints();
@@ -88,7 +91,7 @@ public class MainView extends JFrame{
 
         // space for the user to write the name
         smComensals = new SpinnerNumberModel(1,1,MAX_COMENSALS,1);
-        JSpinner spinner = new JSpinner(smComensals);
+        spinner = new JSpinner(smComensals);
         JFormattedTextField tf = ((JSpinner.DefaultEditor) spinner.getEditor()).getTextField();
         tf.setEditable(false);
         tf.setBackground(Color.WHITE);
@@ -133,6 +136,7 @@ public class MainView extends JFrame{
         Date startDate = calendar.getTime();
         sdmDate = new SpinnerDateModel(initDate,startDate,null,Calendar.HOUR_OF_DAY);
         spinnerDate = new JSpinner(sdmDate);
+        spinnerDate.setEditor(new JSpinner.DateEditor(spinnerDate, new SimpleDateFormat("dd/MM/yyyy").toPattern()));
         c.gridx = 1;
         c.weightx = 0.5;
         c.insets = new Insets(10,0,10,20);
@@ -160,9 +164,10 @@ public class MainView extends JFrame{
     /***
      * Function that makes the connection between the controllers and the view
      * @param b ButtonController instance parameter
-     * @param k KeyController instance parameter
+     * @param mc MouseComensalsController instance parameter
+     * @param md MouseDateController instance parameter
      */
-    public void registerControllers(ButtonController b, KeyController k){
+    public void registerControllers(ButtonController b, MouseComensalsController mc, MouseDateController md){
         // register the button
         jbReservation.setActionCommand("Reservation");
         jbReservation.addActionListener(b);
@@ -172,6 +177,10 @@ public class MainView extends JFrame{
         jcbAsk.addActionListener(b);
         jcbOrder.setActionCommand("Order");
         jcbOrder.addActionListener(b);
+
+        // register mouse controller
+        spinner.addMouseWheelListener(mc);
+        spinnerDate.addMouseWheelListener(md);
     }
 
     /***
@@ -289,5 +298,30 @@ public class MainView extends JFrame{
         jtfUser.setName("");
         smComensals.setValue(1);
         resetCounter();
+    }
+
+    public void addComensals(int i){
+        smComensals.setValue((int) smComensals.getValue() + i);
+    }
+
+
+    public int getMaxComensals() {
+        return MAX_COMENSALS;
+    }
+
+    public void increaseDay() {
+        Date d = (Date) sdmDate.getValue();
+        Calendar c = Calendar.getInstance();
+        c.setTime(d);
+        c.add(Calendar.DATE, 1);
+        sdmDate.setValue(c.getTime());
+    }
+
+    public void decreaseDay() {
+        Date d = (Date) sdmDate.getValue();
+        Calendar c = Calendar.getInstance();
+        c.setTime(d);
+        c.add(Calendar.DATE, -1);
+        sdmDate.setValue(c.getTime());
     }
 }

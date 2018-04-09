@@ -1,9 +1,12 @@
 // create local imports from our clases
 import controller.ButtonController;
 import controller.KeyController;
+import controller.MouseComensalsController;
+import controller.MouseDateController;
 import model.ConnectivityData;
-import network.ReceptionNetwork;
 import view.MainView;
+
+import java.awt.event.MouseWheelListener;
 
 
 /***
@@ -25,9 +28,11 @@ public class Main {
         // create the controllers
         ButtonController bController = new ButtonController(mView, mData);
         KeyController kController = new KeyController();
+        MouseComensalsController mcController = new MouseComensalsController(mView);
+        MouseDateController mdController = new MouseDateController(mView);
 
         // make the connections with the view
-        mView.registerControllers(bController,kController);
+        mView.registerControllers(bController,mcController, mdController);
 
         // show view
         mView.setVisible(true);
