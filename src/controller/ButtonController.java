@@ -29,6 +29,13 @@ public class ButtonController implements ActionListener{
     public ButtonController(MainView mView, ConnectivityData cModel) {
         this.mView = mView;
         this.cModel = cModel;
+        try {
+            this.rNetwork = new ReceptionNetwork(cModel.getPORT());
+        } catch (IOException e) {
+            mView.mostraErrorServidor("Error a l'hora de conectar-se al servidor!", "Error");
+            System.exit(1);
+        }
+
     }
 
     /***
@@ -70,10 +77,11 @@ public class ButtonController implements ActionListener{
                     // connection with server, send client petition
                     try{
 
-                        rNetwork = new ReceptionNetwork(cModel.getIP(), cModel.getPORT());
-                        rNetwork.sendName(mView.getReservationName());
-                        rNetwork.sendComensals(mView.getComensals());
-                        rNetwork.sendDate(mView.getDate());
+                        //rNetwork = new ReceptionNetwork(cModel.getPORT());
+                        //rNetwork.sendName(mView.getReservationName());
+                        //rNetwork.sendComensals(mView.getComensals());
+                        //rNetwork.sendDate(mView.getDate());
+                        rNetwork.sendReservation(mView.getReservationName(), mView.getComensals(), mView.getDate());
                     }catch (Exception e1){
                         mView.popWindow(mView, e1.getMessage(), "Server Error", "Error");
                         try {
@@ -89,6 +97,7 @@ public class ButtonController implements ActionListener{
                         String code = rNetwork.getCode();
                         if(answer){
                             mView.popWindow(mView, "Your table code is: " + code, "Now you have a table", "Info");
+                            //TODO: BUIDAR ELS CAMPS DE LA VISTA UN COP LA RESERVA ESTA FETA
                         }
                     }catch (Exception e1){
                         mView.popWindow(mView, e1.getMessage(), "Server Error", "Error");

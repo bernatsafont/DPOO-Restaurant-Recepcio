@@ -6,6 +6,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Date;
 
@@ -22,20 +23,18 @@ public class ReceptionNetwork {
 
     /***
      * Constructor that inits the server connection with a given port and ip
-     * @param ip String with the ip value
      * @param port integer with the port value
      */
-    public ReceptionNetwork(String ip, int port){
+    public ReceptionNetwork(int port) throws IOException{
 
         // init the values with the connection
-        try {
-            socket = new Socket(ip, port);
-            dos = new DataOutputStream(socket.getOutputStream());
-            oos = new ObjectOutputStream(socket.getOutputStream());
-            dis = new DataInputStream(socket.getInputStream());
-        } catch (IOException e) {
-            System.out.println("Error en crear el socket");
-        }
+        InetAddress iAddress = null;
+        iAddress = InetAddress.getLocalHost();
+        String IP = iAddress.getHostAddress();
+        socket = new Socket(String.valueOf(IP), port);
+        dos = new DataOutputStream(socket.getOutputStream());
+        oos = new ObjectOutputStream(socket.getOutputStream());
+        dis = new DataInputStream(socket.getInputStream());
     }
 
     /***
@@ -92,5 +91,13 @@ public class ReceptionNetwork {
      */
     public String getCode() throws IOException {
         return dis.readUTF();
+    }
+
+    public void sendReservation(String reservationName, int comensals, Date date) throws IOException {
+        dos.writeUTF("RESERVATION");
+        dos.writeUTF(reservationName);
+        //TODO: COMPROVAR QUE EL NOMBRE DE COMENSALS ES CORRECTE I NO STRINGS
+        dos.writeInt(comensals);
+        oos.writeObject(date);
     }
 }
