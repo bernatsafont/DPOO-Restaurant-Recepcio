@@ -38,33 +38,6 @@ public class ReceptionNetwork {
     }
 
     /***
-     * Method that sends the name to the server
-     * @param name String with the order name
-     * @throws IOException possible exception to found about the input and output connection
-     */
-    public void sendName(String name) throws IOException {
-        dos.writeUTF(name);
-    }
-
-    /***
-     * Method that sends the number of comensals to the server
-     * @param comensals integer with the number of comensals
-     * @throws IOException possible exception to found about the input and output connection
-     */
-    public void sendComensals(int comensals) throws IOException {
-        dos.writeInt(comensals);
-    }
-
-    /***
-     * Method that sends the reservation Date to the server
-     * @param date Date with the reservation date
-     * @throws IOException possible exception to found about the input and output connection
-     */
-    public void sendDate(Date date) throws IOException {
-        oos.writeObject(date);
-    }
-
-    /***
      * Method that waits for a answer of the server
      * @return String with the received value
      * @throws IOException possible exception to found about the input and output connection

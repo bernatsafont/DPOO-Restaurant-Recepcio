@@ -256,17 +256,6 @@ public class MainView extends JFrame{
 
     }
 
-    /**
-     * Displays error message on view
-     * @param message Error message to be displayed
-     * @param title Error title to be displayed
-     */
-    public void mostraErrorServidor(String message, String title) {
-        String[] options = { "OK" };
-        JOptionPane.showOptionDialog(this, message,
-                title, JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE,
-                null, options, options[0]);
-    }
 
     /***
      * Method that resets the time on the date counter

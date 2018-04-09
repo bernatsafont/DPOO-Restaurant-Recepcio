@@ -29,13 +29,6 @@ public class ButtonController implements ActionListener{
     public ButtonController(MainView mView, ConnectivityData cModel) {
         this.mView = mView;
         this.cModel = cModel;
-        try {
-            this.rNetwork = new ReceptionNetwork(cModel.getPORT());
-        } catch (IOException e) {
-            mView.mostraErrorServidor("Error a l'hora de conectar-se al servidor!", "Error");
-            System.exit(1);
-        }
-
     }
 
     /***
@@ -77,11 +70,8 @@ public class ButtonController implements ActionListener{
                     // connection with server, send client petition
                     try{
 
-                        //rNetwork = new ReceptionNetwork(cModel.getPORT());
-                        //rNetwork.sendName(mView.getReservationName());
-                        //rNetwork.sendComensals(mView.getComensals());
-                        //rNetwork.sendDate(mView.getDate());
-                        rNetwork.sendReservation(mView.getReservationName(), mView.getComensals(), mView.getDate());
+                        rNetwork = new ReceptionNetwork(cModel.getPORT());
+                           rNetwork.sendReservation(mView.getReservationName(), mView.getComensals(), mView.getDate());
                     }catch (Exception e1){
                         mView.popWindow(mView, e1.getMessage(), "Server Error", "Error");
                         try {
