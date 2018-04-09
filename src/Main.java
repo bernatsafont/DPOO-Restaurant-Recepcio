@@ -1,12 +1,12 @@
 // create local imports from our clases
 import controller.ButtonController;
-import controller.KeyController;
+import controller.MailController;
 import controller.MouseComensalsController;
 import controller.MouseDateController;
 import model.ConnectivityData;
+import model.MailData;
+import view.MailView;
 import view.MainView;
-
-import java.awt.event.MouseWheelListener;
 
 
 /***
@@ -21,18 +21,22 @@ public class Main {
     public static void main(String[] args) {
         // crate the view
         MainView mView = new MainView();
+        MailView mailView = new MailView();
 
         // create the model
         ConnectivityData mData = new ConnectivityData();
+        MailData mailData = new MailData();
+
 
         // create the controllers
         ButtonController bController = new ButtonController(mView, mData);
-        KeyController kController = new KeyController();
         MouseComensalsController mcController = new MouseComensalsController(mView);
         MouseDateController mdController = new MouseDateController(mView);
+        MailController mailController = new MailController(mailData,mailView);
 
         // make the connections with the view
         mView.registerControllers(bController,mcController, mdController);
+        mailView.registerController(mailController);
 
         // show view
         mView.setVisible(true);
