@@ -70,10 +70,8 @@ public class ButtonController implements ActionListener{
                     // connection with server, send client petition
                     try{
 
-                        rNetwork = new ReceptionNetwork(cModel.getIP(), cModel.getPORT());
-                        rNetwork.sendName(mView.getReservationName());
-                        rNetwork.sendComensals(mView.getComensals());
-                        rNetwork.sendDate(mView.getDate());
+                        rNetwork = new ReceptionNetwork(cModel.getPORT());
+                           rNetwork.sendReservation(mView.getReservationName(), mView.getComensals(), mView.getDate());
                     }catch (Exception e1){
                         mView.popWindow(mView, e1.getMessage(), "Server Error", "Error");
                         try {
@@ -85,10 +83,17 @@ public class ButtonController implements ActionListener{
 
                     // wait server answer
                     try{
+
                         boolean answer = rNetwork.getAnswer();
                         String code = rNetwork.getCode();
+                        System.out.println(answer);
+                        System.out.println(code);
                         if(answer){
                             mView.popWindow(mView, "Your table code is: " + code, "Now you have a table", "Info");
+                            //TODO: BUIDAR ELS CAMPS DE LA VISTA UN COP LA RESERVA ESTA FETA
+                        }else{
+                            mView.popWindow(mView, code, "Unable to reserve a table", "Error");
+
                         }
                     }catch (Exception e1){
                         mView.popWindow(mView, e1.getMessage(), "Server Error", "Error");

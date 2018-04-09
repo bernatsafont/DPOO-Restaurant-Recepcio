@@ -262,6 +262,7 @@ public class MainView extends JFrame{
 
     }
 
+
     /***
      * Method that resets the time on the date counter
      */
