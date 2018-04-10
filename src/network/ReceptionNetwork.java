@@ -67,6 +67,8 @@ public class ReceptionNetwork {
     }
 
     public void sendReservation(String reservationName, int comensals, Date date) throws IOException {
+
+        //TODO: FER COMPROVACIONS QUE EL PANDO HA FET AL SERVER PERQUE LES TEVES SÓN RONYOSES
         dos.writeUTF("RESERVATION");
         dos.writeUTF(reservationName);
         dos.writeInt(comensals);
