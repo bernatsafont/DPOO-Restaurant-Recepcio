@@ -86,8 +86,6 @@ public class ButtonController implements ActionListener{
 
                         boolean answer = rNetwork.getAnswer();
                         String code = rNetwork.getCode();
-                        System.out.println(answer);
-                        System.out.println(code);
                         if(answer){
                             mView.popWindow(mView, "Your table code is: " + code, "Now you have a table", "Info");
                             mView.clearAllFields();
