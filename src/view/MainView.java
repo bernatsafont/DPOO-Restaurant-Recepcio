@@ -131,7 +131,7 @@ public class MainView extends JFrame{
         jpTotal.add(jlReservation, c);
 
         // place the date
-        /*
+
         Calendar calendar = Calendar.getInstance();
         Date initDate = calendar.getTime();
         calendar.add(Calendar.MINUTE, -1);
@@ -139,18 +139,18 @@ public class MainView extends JFrame{
         sdmDate = new SpinnerDateModel(initDate,startDate,null,Calendar.HOUR_OF_DAY);
         spinnerDate = new JSpinner(sdmDate);
         spinnerDate.setEditor(new JSpinner.DateEditor(spinnerDate, new SimpleDateFormat("dd/MM/yyyy").toPattern()));
-        */
+
         JDateChooser datePurchased = new JDateChooser();
         c.gridx = 1;
         c.weightx = 0.5;
         c.insets = new Insets(10,0,10,20);
         c.gridwidth = 2;
-        /*
+
         spinnerDate.setEnabled(false);
         JFormattedTextField tfDate = ((JSpinner.DefaultEditor) spinnerDate.getEditor()).getTextField();
         tfDate.setEditable(false);
         tfDate.setBackground(Color.WHITE);
-        */
+
         jpTotal.add(spinnerDate,c);
 
         // reservation button
