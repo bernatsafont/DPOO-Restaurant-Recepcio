@@ -14,7 +14,6 @@ public class MailView extends JDialog {
 
         jbSend = new JButton("Send");
 
-
     }
 
     public void registerController(MailController mailController) {
