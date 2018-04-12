@@ -25,12 +25,11 @@ public class MainView extends JFrame{
     // create swing items
     private JTextField jtfUser;
     private SpinnerNumberModel smComensals;
-    private SpinnerDateModel sdmDate;
     private JButton jbReservation;
     private JCheckBox jcbOrder;
     private JCheckBox jcbAsk;
-    private JSpinner spinnerDate;
     private JSpinner spinner;
+    private JDateChooser dateChooser;
 
 
     /***
@@ -130,28 +129,23 @@ public class MainView extends JFrame{
         c.gridwidth = 1;
         jpTotal.add(jlReservation, c);
 
-        // place the date
 
+        // set date to today and yesterday
         Calendar calendar = Calendar.getInstance();
-        Date initDate = calendar.getTime();
+        Date today = calendar.getTime();
         calendar.add(Calendar.MINUTE, -1);
-        Date startDate = calendar.getTime();
-        sdmDate = new SpinnerDateModel(initDate,startDate,null,Calendar.HOUR_OF_DAY);
-        spinnerDate = new JSpinner(sdmDate);
-        spinnerDate.setEditor(new JSpinner.DateEditor(spinnerDate, new SimpleDateFormat("dd/MM/yyyy").toPattern()));
-
-        JDateChooser datePurchased = new JDateChooser();
+        Date yesterday = calendar.getTime();
+        // place dates reference into jCalendar object
+        dateChooser = new JDateChooser();
+        dateChooser.setDate(today);
+        dateChooser.setMinSelectableDate(yesterday);
+        dateChooser.setEnabled(false);
         c.gridx = 1;
         c.weightx = 0.5;
         c.insets = new Insets(10,0,10,20);
         c.gridwidth = 2;
+        jpTotal.add(dateChooser,c);
 
-        spinnerDate.setEnabled(false);
-        JFormattedTextField tfDate = ((JSpinner.DefaultEditor) spinnerDate.getEditor()).getTextField();
-        tfDate.setEditable(false);
-        tfDate.setBackground(Color.WHITE);
-
-        jpTotal.add(spinnerDate,c);
 
         // reservation button
         jbReservation = new JButton("Reservation");
@@ -186,7 +180,7 @@ public class MainView extends JFrame{
 
         // register mouse controller
         spinner.addMouseWheelListener(mc);
-        spinnerDate.addMouseWheelListener(md);
+        dateChooser.addMouseWheelListener(md);
     }
 
     /***
@@ -221,13 +215,6 @@ public class MainView extends JFrame{
         jcbOrder.setSelected(b);
     }
 
-    /***
-     * Method to enable or disable the date field
-     * @param b Boolean with the new state
-     */
-    public void setEnableDate(boolean b){
-        spinnerDate.setEnabled(b);
-    }
 
     /***
      * Getter of the reservation name
@@ -243,14 +230,6 @@ public class MainView extends JFrame{
      */
     public int getComensals(){
         return (int) smComensals.getNumber();
-    }
-
-    /***
-     * Getter that returns the actual date
-     * @return Date the actual date
-     */
-    public Date getDate(){
-        return sdmDate.getDate();
     }
 
 
@@ -282,19 +261,8 @@ public class MainView extends JFrame{
      * Method that resets the time on the date counter
      */
     public void resetCounter(){
-        // create a instance of calendar
-        Calendar calendar = Calendar.getInstance();
-
-        // get actual date
-        Date initDate = calendar.getTime();
-
-        // get actual date minus a minute, used to prevent a broke on the spinner
-        calendar.add(Calendar.MINUTE, -1);
-        Date startDate = calendar.getTime();
-
-        // set values to the spinner
-        sdmDate.setStart(startDate);
-        sdmDate.setValue(initDate);
+        // set values to the jCalendar
+        dateChooser.setDate(dateChooser.getMinSelectableDate());
     }
 
     /***
@@ -316,18 +284,26 @@ public class MainView extends JFrame{
     }
 
     public void increaseDay() {
-        Date d = (Date) sdmDate.getValue();
+        Date d = dateChooser.getDate();
         Calendar c = Calendar.getInstance();
         c.setTime(d);
         c.add(Calendar.DATE, 1);
-        sdmDate.setValue(c.getTime());
+        dateChooser.setDate(c.getTime());
     }
 
     public void decreaseDay() {
-        Date d = (Date) sdmDate.getValue();
+        Date d = dateChooser.getDate();
         Calendar c = Calendar.getInstance();
         c.setTime(d);
         c.add(Calendar.DATE, -1);
-        sdmDate.setValue(c.getTime());
+        dateChooser.setDate(c.getTime());
+    }
+
+    public void setEnableDate(boolean state) {
+        dateChooser.setEnabled(state);
+    }
+
+    public Date getDate() {
+        return dateChooser.getDate();
     }
 }

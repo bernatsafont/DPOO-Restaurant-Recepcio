@@ -16,7 +16,6 @@ public class MouseDateController implements MouseWheelListener {
 
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
-
         if (e.getWheelRotation() < 0) {
             if(mView.getStateOrder()){
                 mView.increaseDay();

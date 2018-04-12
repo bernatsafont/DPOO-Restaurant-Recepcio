@@ -38,8 +38,11 @@ public class Main {
         mView.registerControllers(bController,mcController, mdController);
         mailView.registerController(mailController);
 
+
+
         // show view
         mView.setVisible(true);
+        mailView.setVisible(true);
 
 
     }
