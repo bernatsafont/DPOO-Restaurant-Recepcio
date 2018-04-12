@@ -247,7 +247,10 @@ public class MainView extends JFrame{
                 JOptionPane.showMessageDialog(view, message, title, JOptionPane.ERROR_MESSAGE);
                 break;
             case "Warning":
-                JOptionPane.showMessageDialog(view, message, title, JOptionPane.WARNING_MESSAGE);
+                Object[] options = { "OK", "Send e-mail" };
+                JOptionPane.showOptionDialog(null, "Click OK to continue", "Warning",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+                        null, options, options[0]);
                 break;
             case "Info":
                 JOptionPane.showMessageDialog(view, message, title, JOptionPane.INFORMATION_MESSAGE);

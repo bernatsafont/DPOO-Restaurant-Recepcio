@@ -3,10 +3,13 @@ package controller;
 
 // import local classes
 import model.ConnectivityData;
+import model.MailData;
 import network.ReceptionNetwork;
+import view.MailView;
 import view.MainView;
 
 // import java classes
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -22,15 +25,17 @@ public class ButtonController implements ActionListener{
     private MainView mView;
     private ReceptionNetwork rNetwork;
     private ConnectivityData cModel;
+    private MailController mailController;
 
     /***
      * Createor that sets the view and the model
      * @param mView MainView instance to get the view
      * @param cModel ConnectivityData instance to get the model
      */
-    public ButtonController(MainView mView, ConnectivityData cModel) {
+    public ButtonController(MainView mView, ConnectivityData cModel, MailController mailController) {
         this.mView = mView;
         this.cModel = cModel;
+        this.mailController = mailController;
     }
 
     /***
@@ -89,7 +94,16 @@ public class ButtonController implements ActionListener{
                         boolean answer = rNetwork.getAnswer();
                         String code = rNetwork.getCode();
                         if(answer){
-                            mView.popWindow(mView, "Your table code is: " + code, "Now you have a table", "Info");
+                            //mView.popWindow(mView, "Your table code is: " + code, "Now you have a table", "Info");
+                            String[] options = { "OK", "Send e-mail" };
+                            int response = JOptionPane.showOptionDialog(null, "Your table code is: " + code, "Now you have a table",
+                                    JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
+                                    null, options, options[0]);
+                            if (response == 1){
+                                mailController.setVisible(true);
+                                mailController.setMessage("Your table code is: " + code);
+
+                            }
                             mView.clearAllFields();
                         }else{
                             mView.popWindow(mView, code, "Unable to reserve a table", "Error");

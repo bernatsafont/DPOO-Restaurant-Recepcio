@@ -29,21 +29,18 @@ public class Main {
 
 
         // create the controllers
-        ButtonController bController = new ButtonController(mView, mData);
         MouseComensalsController mcController = new MouseComensalsController(mView);
         MouseDateController mdController = new MouseDateController(mView);
         MailController mailController = new MailController(mailData,mailView);
+        ButtonController bController = new ButtonController(mView, mData, mailController);
 
         // make the connections with the view
         mView.registerControllers(bController,mcController, mdController);
         mailView.registerController(mailController);
 
 
-
         // show view
         mView.setVisible(true);
-        mailView.setVisible(true);
-
 
     }
 }
