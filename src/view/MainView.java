@@ -20,7 +20,7 @@ import java.util.Date;
 public class MainView extends JFrame{
 
     // create constants
-    private static final int MAX_COMENSALS = 20;
+    private static final int MAX_COMENSALS = 10;
 
     // create swing items
     private JTextField jtfUser;
@@ -247,10 +247,7 @@ public class MainView extends JFrame{
                 JOptionPane.showMessageDialog(view, message, title, JOptionPane.ERROR_MESSAGE);
                 break;
             case "Warning":
-                Object[] options = { "OK", "Send e-mail" };
-                JOptionPane.showOptionDialog(null, "Click OK to continue", "Warning",
-                        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
-                        null, options, options[0]);
+                JOptionPane.showMessageDialog(view, message, title, JOptionPane.WARNING_MESSAGE);
                 break;
             case "Info":
                 JOptionPane.showMessageDialog(view, message, title, JOptionPane.INFORMATION_MESSAGE);
@@ -264,8 +261,15 @@ public class MainView extends JFrame{
      * Method that resets the time on the date counter
      */
     public void resetCounter(){
+        // set date to today and yesterday
+        Calendar calendar = Calendar.getInstance();
+        Date today = calendar.getTime();
+        calendar.add(Calendar.MINUTE, -1);
+        Date yesterday = calendar.getTime();
+
         // set values to the jCalendar
-        dateChooser.setDate(dateChooser.getMinSelectableDate());
+        dateChooser.setDate(today);
+        dateChooser.setMinSelectableDate(yesterday);
     }
 
     /***

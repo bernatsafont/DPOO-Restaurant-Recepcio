@@ -3,9 +3,7 @@ package controller;
 
 // import local classes
 import model.ConnectivityData;
-import model.MailData;
 import network.ReceptionNetwork;
-import view.MailView;
 import view.MainView;
 
 // import java classes
@@ -100,8 +98,16 @@ public class ButtonController implements ActionListener{
                                     JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                                     null, options, options[0]);
                             if (response == 1){
+
+                                StringBuilder message = new StringBuilder();
+                                message.append("Wellcome to DPO RESTAURANT, the most binary restaurant in the world.\n");
+                                message.append("\n\tYou have a reservation for the: " + mView.getDate().toString());
+                                message.append("\n\tThe table is reserved under the name of: " + mView.getReservationName());
+                                message.append("\n\tThe table is reserved for: " + mView.getComensals() + "Comensals");
+                                message.append("\n\tYour table code is: " + code);
+                                message.append("\nWe hope you have a nice service.");
                                 mailController.setVisible(true);
-                                mailController.setMessage("Your table code is: " + code);
+                                mailController.setMessage(message.toString());
 
                             }
                             mView.clearAllFields();
