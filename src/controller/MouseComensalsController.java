@@ -16,7 +16,7 @@ public class MouseComensalsController implements MouseWheelListener {
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
         if (e.getWheelRotation() < 0) {
-            if(mView.getComensals()< (mView.getMaxComensals() -1)){
+            if(mView.getComensals()< (mView.getMaxComensals())){
                 mView.addComensals(1);
             }
         } else {

@@ -20,7 +20,7 @@ import java.util.Date;
 public class MainView extends JFrame{
 
     // create constants
-    private static final int MAX_COMENSALS = 100;
+    private static final int MAX_COMENSALS = 20;
 
     // create swing items
     private JTextField jtfUser;

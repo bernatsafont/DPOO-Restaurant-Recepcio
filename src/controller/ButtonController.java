@@ -10,6 +10,8 @@ import view.MainView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /***
  * Class to control all the button actions
@@ -108,17 +110,23 @@ public class ButtonController implements ActionListener{
     }
 
     /***
-     * Method that looks if all the items are filled
+     * Method that looks if all the items are filled or if there are illegal characters
      * @return String with the result
      */
     private String checkEntry(){
+        String nomReserva = mView.getReservationName();
         StringBuilder sb = new StringBuilder();
-        if(mView.getReservationName().equals("")){
+        Pattern pattern = Pattern.compile("['\"*$]");
+        Matcher matcher = pattern.matcher(nomReserva);
+        if(nomReserva.equals("")){
             sb.append("The name is not filled. ");
+        }else if (nomReserva.contains("\"") || nomReserva.equals(" ") || nomReserva.equals("") || matcher.find()){
+            sb.append("You are using illegals characters");
         }else{
             sb.append("OK");
         }
 
         return sb.toString();
     }
+
 }
