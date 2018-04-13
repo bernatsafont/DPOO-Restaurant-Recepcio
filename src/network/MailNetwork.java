@@ -11,7 +11,7 @@ public class MailNetwork {
 
     public MailNetwork() {
     }
-
+//TODO: THREAAADDDSSS!!!
     public void sendMail(String origin, String password, String to, String message) throws Exception{
 
         // stables gmail host
