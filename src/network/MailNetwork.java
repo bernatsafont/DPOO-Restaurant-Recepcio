@@ -7,12 +7,35 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 
-public class MailNetwork {
+public class MailNetwork extends Thread{
 
-    public MailNetwork() {
+    // defining variables
+    private String origin;
+    private String password;
+    private String to;
+    private String message;
+
+
+    public MailNetwork(String origin, String password, String to, String message) {
+        this.origin = origin;
+        this.password = password;
+        this.to = to;
+        this.message = message;
+        start();
+
     }
-//TODO: THREAAADDDSSS!!!
-    public void sendMail(String origin, String password, String to, String message) throws Exception{
+
+    @Override
+    public void run(){
+
+        try {
+            sendMail();
+        } catch (Exception e) {
+            interrupt();
+        }
+    }
+
+    private void sendMail() throws Exception{
 
         // stables gmail host
         String host ="smtp.gmail.com" ;

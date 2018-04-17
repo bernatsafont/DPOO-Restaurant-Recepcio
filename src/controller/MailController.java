@@ -30,9 +30,8 @@ public class MailController implements ActionListener{
     private void sendMail(String sendMail) {
         String originMail = mailData.getUSER();
         String password = mailData.getPASSWORD();
-        mailNetwork = new MailNetwork();
         try {
-            mailNetwork.sendMail(originMail, password, sendMail, mailData.getMessage());
+            mailNetwork = new MailNetwork(originMail, password, sendMail, mailData.getMessage());
         } catch (Exception e) {
             mailView.popWindow(mailView, e.getMessage(), "Email error", "Error");
         }

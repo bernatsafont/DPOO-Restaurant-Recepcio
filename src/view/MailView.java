@@ -31,9 +31,9 @@ public class MailView extends JFrame {
         c.gridy = 0;
         c.insets = new Insets(10,20,10,10);
         c.gridwidth = 1;
+
         jpMail.add(jlUsername, c);
-//TODO : Buidar camp abans d'entregar
-        jtfMail = new JTextField("ls29308@salleurl.edu");
+        jtfMail = new JTextField("");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 0;
