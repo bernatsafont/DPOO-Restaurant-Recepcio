@@ -86,5 +86,6 @@ public class MailNetwork extends Thread{
         transport.sendMessage(msg, msg.getAllRecipients());
         transport.close();
 
+
     }
 }
