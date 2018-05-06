@@ -281,15 +281,25 @@ public class MainView extends JFrame{
         resetCounter();
     }
 
+    /***
+     * Method that adds comensals to the spinner with a given number
+     * @param i integer with the number of people to add to the spinner
+     */
     public void addComensals(int i){
         smComensals.setValue((int) smComensals.getValue() + i);
     }
 
-
+    /***
+     * Method that gets the max conmensals of a table
+     * @return integer with the maximum number of comensals
+     */
     public int getMaxComensals() {
         return MAX_COMENSALS;
     }
 
+    /***
+     * Method that increases a day the JCalendar
+     */
     public void increaseDay() {
         Date d = dateChooser.getDate();
         Calendar c = Calendar.getInstance();
@@ -298,6 +308,9 @@ public class MainView extends JFrame{
         dateChooser.setDate(c.getTime());
     }
 
+    /***
+     * Method that decreases a day the JCalendar
+     */
     public void decreaseDay() {
         Date d = dateChooser.getDate();
         Calendar c = Calendar.getInstance();
@@ -306,10 +319,18 @@ public class MainView extends JFrame{
         dateChooser.setDate(c.getTime());
     }
 
+    /***
+     * Method that enables or disables the date with a given state
+     * @param state boolean with the date state
+     */
     public void setEnableDate(boolean state) {
         dateChooser.setEnabled(state);
     }
 
+    /***
+     * Method that gets the date of the JCalendar
+     * @return Date with the current selected date
+     */
     public Date getDate() {
         return dateChooser.getDate();
     }

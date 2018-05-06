@@ -1,16 +1,26 @@
+// package where it belongs
 package view;
 
+// import our classes
 import controller.MailController;
 
+// import java classes
 import javax.swing.*;
 import java.awt.*;
 
+/***
+ * This class manages the view of the mail window
+ */
 public class MailView extends JFrame {
 
+    // utility attributes
     private JButton jbSend;
     private JTextField jtfMail;
 
 
+    /***
+     * Constructor of the class and view
+     */
     public MailView() {
         // create jpanel main mail view
         JPanel jpMail = new JPanel();
@@ -61,12 +71,20 @@ public class MailView extends JFrame {
 
     }
 
+    /***
+     * This method registers the controllers to the view items
+     * @param mailController MailController instance
+     */
     public void registerController(MailController mailController) {
         jbSend.addActionListener(mailController);
         jbSend.setActionCommand("Send");
 
     }
 
+    /***
+     * This method get's the mail form the view
+     * @return String with the mail entry
+     */
     public String getMail(){
         return jtfMail.getText();
     }

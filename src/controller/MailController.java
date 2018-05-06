@@ -36,12 +36,15 @@ public class MailController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        // send a mail if the send button is pressed
+        // send a mail if the send button is pressed and the mail is proper entry
         if(e.getActionCommand().equals("Send")){
-            sendMail(mailView.getMail());
-            mailView.dispose();
+            if (checkMailEntry()){
+                sendMail(mailView.getMail());
+                mailView.dispose();
+            }else{
+                mailView.popWindow(mailView, "Wrong mail entry", "Incorrect Entry", "Warning");
+            }
         }
-
     }
 
     /***
@@ -75,5 +78,17 @@ public class MailController implements ActionListener{
         mailData.setMessage(message);
     }
 
-    //TODO:comporvar entrada de correu
+
+    /***
+     * This method checks if the mail entry is correct
+     * @return
+     */
+    private boolean checkMailEntry(){
+        String mail = mailView.getMail();
+        if (mail.equals("") || !mail.contains("@") || !mail.contains(".")){
+            return false;
+        }
+        return true;
+    }
+
 }
