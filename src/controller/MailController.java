@@ -18,7 +18,6 @@ public class MailController implements ActionListener{
     // instance attributes
     private MailData mailData;
     private MailView mailView;
-    private MailNetwork mailNetwork;
 
     /***
      * COnstructor with parameters of the class
@@ -53,7 +52,7 @@ public class MailController implements ActionListener{
         String originMail = mailData.getUSER();
         String password = mailData.getPASSWORD();
         try {
-            mailNetwork = new MailNetwork(originMail, password, sendMail, mailData.getMessage());
+            new MailNetwork(originMail, password, sendMail, mailData.getMessage());
         } catch (Exception e) {
             mailView.popWindow(mailView, e.getMessage(), "Email error", "Error");
         }
@@ -75,4 +74,6 @@ public class MailController implements ActionListener{
     public void setMessage(String message) {
         mailData.setMessage(message);
     }
+
+    //TODO:comporvar entrada de correu
 }
