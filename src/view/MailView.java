@@ -1,7 +1,6 @@
 package view;
 
 import controller.MailController;
-import model.MailData;
 
 import javax.swing.*;
 import java.awt.*;
