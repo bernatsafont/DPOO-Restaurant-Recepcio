@@ -17,7 +17,7 @@ public class ConnectivityData {
     // generate constant values
     private String IP;
     private int PORT;
-    private final String PATH = "resources/";
+    private final static String PATH = "resources/";
 
     /***
      * Constructor of the class, sets the constants value

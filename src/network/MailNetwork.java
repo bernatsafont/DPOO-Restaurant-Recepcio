@@ -56,7 +56,7 @@ public class MailNetwork extends Thread{
     private void sendMail() throws Exception{
 
         // stables gmail host
-        String host ="smtp.gmail.com" ;
+        String host = "smtp.gmail.com" ;
 
         // generate and set mail propierties
         Properties properties = System.getProperties();
@@ -81,7 +81,7 @@ public class MailNetwork extends Thread{
         msg.setText(message);
 
         // send message
-        Transport transport=mailSession.getTransport("smtp");
+        Transport transport = mailSession.getTransport("smtp");
         transport.connect(host, origin, password);
         transport.sendMessage(msg, msg.getAllRecipients());
         transport.close();

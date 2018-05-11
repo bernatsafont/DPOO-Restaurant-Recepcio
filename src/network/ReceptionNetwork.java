@@ -28,8 +28,7 @@ public class ReceptionNetwork {
     public ReceptionNetwork(int port) throws IOException{
 
         // init the values with the connection
-        InetAddress iAddress = null;
-        iAddress = InetAddress.getLocalHost();
+        InetAddress iAddress = InetAddress.getLocalHost();
         String IP = iAddress.getHostAddress();
         socket = new Socket(String.valueOf(IP), port);
         dos = new DataOutputStream(socket.getOutputStream());
