@@ -65,7 +65,7 @@ public class MailView extends JFrame {
         // general settings of the window
         setSize(400,200);
         setTitle("Email");
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         //setVisible(true);
 
