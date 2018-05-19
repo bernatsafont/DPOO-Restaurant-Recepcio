@@ -8,7 +8,7 @@ import controller.MailController;
 import javax.swing.*;
 import java.awt.*;
 
-/***
+/**
  * This class manages the view of the mail window
  */
 public class MailView extends JFrame {
@@ -18,7 +18,7 @@ public class MailView extends JFrame {
     private JTextField jtfMail;
 
 
-    /***
+    /**
      * Constructor of the class and view
      */
     public MailView() {
@@ -71,7 +71,7 @@ public class MailView extends JFrame {
 
     }
 
-    /***
+    /**
      * This method registers the controllers to the view items
      * @param mailController MailController instance
      */
@@ -81,7 +81,7 @@ public class MailView extends JFrame {
 
     }
 
-    /***
+    /**
      * This method get's the mail form the view
      * @return String with the mail entry
      */
@@ -89,7 +89,7 @@ public class MailView extends JFrame {
         return jtfMail.getText();
     }
 
-    /***
+    /**
      * Method to generate message dialog
      * @param view the view where show message
      * @param message String with the message

@@ -10,7 +10,7 @@ import view.MailView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/***
+/**
  * This class controls the mail view and usage
  */
 public class MailController implements ActionListener{
@@ -19,8 +19,8 @@ public class MailController implements ActionListener{
     private MailData mailData;
     private MailView mailView;
 
-    /***
-     * COnstructor with parameters of the class
+    /**
+     * Constructor with parameters of the class
      * @param mailData MailData instance
      * @param mailView MailView instance
      */
@@ -29,7 +29,7 @@ public class MailController implements ActionListener{
         this.mailView = mailView;
     }
 
-    /***
+    /**
      * Override method action performed
      * @param e Event that's throw
      */
@@ -47,7 +47,7 @@ public class MailController implements ActionListener{
         }
     }
 
-    /***
+    /**
      * This method sends a mail to a given mail
      * @param sendMail String with the send mail
      */
@@ -62,7 +62,7 @@ public class MailController implements ActionListener{
 
     }
 
-    /***
+    /**
      * Method that manages the visibility of the mail view
      * @param b boolean with the visibility state
      */
@@ -70,7 +70,7 @@ public class MailController implements ActionListener{
         mailView.setVisible(b);
     }
 
-    /***
+    /**
      * method that sets de message to the mail data class
      * @param message String with the message
      */
@@ -79,7 +79,7 @@ public class MailController implements ActionListener{
     }
 
 
-    /***
+    /**
      * This method checks if the mail entry is correct
      * @return
      */

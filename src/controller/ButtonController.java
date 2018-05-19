@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/***
+/**
  * Class to control all the button actions
  */
 public class ButtonController implements ActionListener{
@@ -25,7 +25,7 @@ public class ButtonController implements ActionListener{
     private ConnectivityData cModel;
     private MailController mailController;
 
-    /***
+    /**
      * Createor that sets the view and the model
      * @param mView MainView instance to get the view
      * @param cModel ConnectivityData instance to get the model
@@ -36,7 +36,7 @@ public class ButtonController implements ActionListener{
         this.mailController = mailController;
     }
 
-    /***
+    /**
      * Method that manages actions performed by the view it's listening
      * @param e Event that is triggered
      */
@@ -129,7 +129,7 @@ public class ButtonController implements ActionListener{
         }
     }
 
-    /***
+    /**
      * Method that looks if all the items are filled or if there are illegal characters
      * @return String with the result
      */

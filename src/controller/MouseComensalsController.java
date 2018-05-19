@@ -8,7 +8,7 @@ import view.MainView;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-/***
+/**
  * This class manages the middle mouse wheel movement on comensals field
  */
 public class MouseComensalsController implements MouseWheelListener {
@@ -16,7 +16,7 @@ public class MouseComensalsController implements MouseWheelListener {
     // instance attributes
     private MainView mView;
 
-    /***
+    /**
      * Constructor with parameters of the class
      * @param mView MainView instance
      */
@@ -24,7 +24,7 @@ public class MouseComensalsController implements MouseWheelListener {
         this.mView = mView;
     }
 
-    /***
+    /**
      * Override method that handles the wheel movement
      * @param e
      */

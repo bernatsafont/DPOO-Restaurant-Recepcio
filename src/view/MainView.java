@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-/***
+/**
  * This class generates the main view of Recepcio program
  */
 public class MainView extends JFrame{
@@ -32,7 +32,7 @@ public class MainView extends JFrame{
     private JDateChooser dateChooser;
 
 
-    /***
+    /**
      * Constructor of the class that generates the items on the view
      */
     public MainView(){
@@ -46,10 +46,9 @@ public class MainView extends JFrame{
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-
     }
 
-    /***
+    /**
      * Private method that populates the view
      */
     private void populateView(){
@@ -161,7 +160,7 @@ public class MainView extends JFrame{
         getContentPane().add(jpTotal);
     }
 
-    /***
+    /**
      * Function that makes the connection between the controllers and the view
      * @param b ButtonController instance parameter
      * @param mc MouseComensalsController instance parameter
@@ -183,7 +182,7 @@ public class MainView extends JFrame{
         dateChooser.addMouseWheelListener(md);
     }
 
-    /***
+    /**
      * Getter of the value of Ask checkbox selection
      * @return Boolean with the selection value
      */
@@ -191,7 +190,7 @@ public class MainView extends JFrame{
         return jcbOrder.isSelected();
     }
 
-    /***
+    /**
      * Getter of the value of Order checkbox selection
      * @return Boolean with the selection value
      */
@@ -199,7 +198,7 @@ public class MainView extends JFrame{
         return jcbOrder.isSelected();
     }
 
-    /***
+    /**
      * Method to select or deselect the Ask checkbox
      * @param b Boolean with the new state
      */
@@ -207,7 +206,7 @@ public class MainView extends JFrame{
         jcbAsk.setSelected(b);
     }
 
-    /***
+    /**
      * Method to select or deselect the Order checkbox
      * @param b Boolean with the new state
      */
@@ -216,7 +215,7 @@ public class MainView extends JFrame{
     }
 
 
-    /***
+    /**
      * Getter of the reservation name
      * @return String with the name of the reservation name
      */
@@ -224,7 +223,7 @@ public class MainView extends JFrame{
         return jtfUser.getText();
     }
 
-    /***
+    /**
      * Getter of comensals
      * @return integer with the number of comensals
      */
@@ -233,7 +232,7 @@ public class MainView extends JFrame{
     }
 
 
-    /***
+    /**
      * Method to generate message dialog
      * @param view the view where show message
      * @param message String with the message
@@ -257,7 +256,7 @@ public class MainView extends JFrame{
     }
 
 
-    /***
+    /**
      * Method that resets the time on the date counter
      */
     public void resetCounter(){
@@ -272,7 +271,7 @@ public class MainView extends JFrame{
         dateChooser.setMinSelectableDate(yesterday);
     }
 
-    /***
+    /**
      * Method that clears all the fiels of the view
      */
     public void clearAllFields(){
@@ -281,7 +280,7 @@ public class MainView extends JFrame{
         resetCounter();
     }
 
-    /***
+    /**
      * Method that adds comensals to the spinner with a given number
      * @param i integer with the number of people to add to the spinner
      */
@@ -289,7 +288,7 @@ public class MainView extends JFrame{
         smComensals.setValue((int) smComensals.getValue() + i);
     }
 
-    /***
+    /**
      * Method that gets the max conmensals of a table
      * @return integer with the maximum number of comensals
      */
@@ -297,7 +296,7 @@ public class MainView extends JFrame{
         return MAX_COMENSALS;
     }
 
-    /***
+    /**
      * Method that increases a day the JCalendar
      */
     public void increaseDay() {
@@ -308,7 +307,7 @@ public class MainView extends JFrame{
         dateChooser.setDate(c.getTime());
     }
 
-    /***
+    /**
      * Method that decreases a day the JCalendar
      */
     public void decreaseDay() {
@@ -319,7 +318,7 @@ public class MainView extends JFrame{
         dateChooser.setDate(c.getTime());
     }
 
-    /***
+    /**
      * Method that enables or disables the date with a given state
      * @param state boolean with the date state
      */
@@ -327,7 +326,7 @@ public class MainView extends JFrame{
         dateChooser.setEnabled(state);
     }
 
-    /***
+    /**
      * Method that gets the date of the JCalendar
      * @return Date with the current selected date
      */

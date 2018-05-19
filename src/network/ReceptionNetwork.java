@@ -10,7 +10,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Date;
 
-/***
+/**
  * Class that manages the connection between the client Recepcio and the server
  */
 public class ReceptionNetwork {
@@ -21,7 +21,7 @@ public class ReceptionNetwork {
     private ObjectOutputStream oos;
     private DataInputStream dis;
 
-    /***
+    /**
      * Constructor that inits the server connection with a given port and ip
      * @param port integer with the port value
      */
@@ -36,7 +36,7 @@ public class ReceptionNetwork {
         dis = new DataInputStream(socket.getInputStream());
     }
 
-    /***
+    /**
      * Method that waits for a answer of the server
      * @return String with the received value
      * @throws IOException possible exception to found about the input and output connection
@@ -45,7 +45,7 @@ public class ReceptionNetwork {
         return dis.readBoolean();
     }
 
-    /***
+    /**
      * Method that closes the connection of the streams and the sockets
      * @throws IOException possible exception to found about the input and output connection
      */
@@ -56,7 +56,7 @@ public class ReceptionNetwork {
         socket.close();
     }
 
-    /***
+    /**
      * Method that waits for a answer of the server
      * @return String with the received value
      * @throws IOException possible exception to found about the input and output connection
@@ -65,6 +65,13 @@ public class ReceptionNetwork {
         return dis.readUTF();
     }
 
+    /**
+     * This method sends the reservation to the server
+     * @param reservationName String with the reservation name
+     * @param comensals integer with the number of comensalls
+     * @param date Date with the date order
+     * @throws IOException possible exception to found about the input and output connection
+     */
     public void sendReservation(String reservationName, int comensals, Date date) throws IOException {
 
         dos.writeUTF("RESERVATION");

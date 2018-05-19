@@ -8,7 +8,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 
-/***
+/**
  * Class that manages all the connections with the webmail service
  */
 public class MailNetwork extends Thread{
@@ -19,7 +19,7 @@ public class MailNetwork extends Thread{
     private String to;
     private String message;
 
-    /***
+    /**
      * Constructor with parameters of the class
      * @param origin String variable of origin webmail direction or acount
      * @param password String variable with the password of the mail
@@ -35,7 +35,7 @@ public class MailNetwork extends Thread{
 
     }
 
-    /***
+    /**
      * Method that override method run sends the e-mail
      */
     @Override
@@ -49,7 +49,7 @@ public class MailNetwork extends Thread{
         }
     }
 
-    /***
+    /**
      * Method that sends the mail
      * @throws Exception if something goes wrong throw an exception
      */

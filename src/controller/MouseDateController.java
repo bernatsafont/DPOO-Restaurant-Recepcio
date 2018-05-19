@@ -9,7 +9,7 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.Calendar;
 
-/***
+/**
  * This class manages the middle mouse wheel movement on comensals field
  */
 public class MouseDateController implements MouseWheelListener {
@@ -17,7 +17,7 @@ public class MouseDateController implements MouseWheelListener {
     // instance attributes
     private MainView mView;
 
-    /***
+    /**
      * Constructor with parameters of the class
      * @param mView MainView instance variable
      */
@@ -25,7 +25,7 @@ public class MouseDateController implements MouseWheelListener {
         this.mView = mView;
     }
 
-    /***
+    /**
      * Override method, manages the mouse events
      * @param e
      */

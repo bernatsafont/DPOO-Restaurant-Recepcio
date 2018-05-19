@@ -9,7 +9,7 @@ import java.util.Scanner;
 // import extra java classes
 import org.json.*;
 
-/***
+/**
  * Class that manages the model information related with the connectivity
  */
 public class ConnectivityData {
@@ -19,7 +19,7 @@ public class ConnectivityData {
     private int PORT;
     private final static String PATH = "resources/";
 
-    /***
+    /**
      * Constructor of the class, sets the constants value
      */
     public ConnectivityData() {
@@ -28,7 +28,7 @@ public class ConnectivityData {
         this.PORT = Integer.parseInt(obj.getString("port_server"));
     }
 
-    /***
+    /**
      * Getter of IP fied
      * @return String with the ip name
      */
@@ -36,7 +36,7 @@ public class ConnectivityData {
         return IP;
     }
 
-    /***
+    /**
      * Getter of PORT field
      * @return integer with the port number
      */
@@ -44,7 +44,7 @@ public class ConnectivityData {
         return PORT;
     }
 
-    /***
+    /**
      * Method that from a file name returns a String in JSON format
      * @param file name of the file that we want to convert to .json
      * @return String converted in .json format

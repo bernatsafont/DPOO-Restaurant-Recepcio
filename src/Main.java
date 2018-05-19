@@ -11,12 +11,12 @@ import view.MainView;
 import javax.swing.*;
 
 
-/***
+/**
  * This class is used to generate the core of the Recepcio program and initiate its constructors
  */
 public class Main {
 
-    /***
+    /**
      * Main method that has the core of the program
      * @param args a String array to read parameters given by a cmd execution
      */

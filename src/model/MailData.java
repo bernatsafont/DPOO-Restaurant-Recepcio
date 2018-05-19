@@ -1,7 +1,7 @@
 // package where it belongs
 package model;
 
-/***
+/**
  * This class handles the data of the mail
  */
 public class MailData {
@@ -13,7 +13,7 @@ public class MailData {
     // attributes
     private String message;
 
-    /***
+    /**
      * Constructor of the class without parameters
      */
     public MailData() {
