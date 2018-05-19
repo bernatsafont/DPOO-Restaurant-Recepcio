@@ -100,7 +100,7 @@ public class ButtonController implements ActionListener{
                             if (response == 1){
 
                                 StringBuilder message = new StringBuilder();
-                                message.append("Wellcome to DPO RESTAURANT, the most binary restaurant in the world.\n");
+                                message.append("Welcome to DPO RESTAURANT, the most binary restaurant in the world.\n");
                                 message.append("\n\tYou have a reservation for the: " + mView.getDate().toString());
                                 message.append("\n\tThe table is reserved under the name of: " + mView.getReservationName());
                                 message.append("\n\tThe table is reserved for: " + mView.getComensals() + "Comensals");
